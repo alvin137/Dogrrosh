@@ -1,11 +1,10 @@
 {
-  "homepage": "https://raw.githubusercontent.com/alvin137/Dogrrosh/master/modupdate.json",
+  "homepage": "https://github.com/alvin137/Dogrrosh/releases",
   "1.11.2": {
     "0.0.0.1": "alpha alpha", 
-	"0.0.0.2": "one more alpha"
   },
   "promos": {
-    "1.11.2-latest": "0.0.0.3",
-    "1.11.2-recommended": "0.0.0.2"
+    "1.11.2-latest": "0.0.0.1",
+    "1.11.2-recommended": "0.0.0.1"
   }
 }

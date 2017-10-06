@@ -10,7 +10,7 @@
   "updateJSON": "https://raw.githubusercontent.com/alvin137/Dogrrosh/master/modupdate.json",
   "authorList": ["alvin137"],
   "credits": "alvin137",
-  "logoFile": "",
+  "logoFile": "assets/dogrrosh/dogrrosh_logo.png",
   "screenshots": [],
   "dependencies": [ttmpcore]
 }

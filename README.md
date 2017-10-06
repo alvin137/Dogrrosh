@@ -1,1 +1,3 @@
-# Dogroshy
+# Dogrrosh
+---
+A simple items mod
