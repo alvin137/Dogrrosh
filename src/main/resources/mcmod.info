@@ -1,16 +1,17 @@
 [
 {
-  "modid": "examplemod",
-  "name": "Example Mod",
-  "description": "Example placeholder mod.",
-  "version": "${version}",
-  "mcversion": "${mcversion}",
+  "modid": "dogrrosh",
+  "name": "Dogrrosh",
+  "description": "A simple items mod",
+  "version": "0.0.0.1",
+  "mcversion": "1.11.2",
   "url": "",
   "updateUrl": "",
-  "authorList": ["ExampleDude"],
-  "credits": "The Forge and FML guys, for making this example",
+  "updateJSON": "https://raw.githubusercontent.com/alvin137/Dogrrosh/master/modupdate.json",
+  "authorList": ["alvin137"],
+  "credits": "alvin137",
   "logoFile": "",
   "screenshots": [],
-  "dependencies": []
+  "dependencies": [ttmpcore]
 }
 ]

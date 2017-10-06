@@ -15,11 +15,11 @@ import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 
-@Mod(name = Dogrrosh.NAME, modid = Dogrrosh.MODID, version = Dogrrosh.VERSION, dependencies = "ttmpcore")
+@Mod(name = Dogrrosh.NAME, modid = Dogrrosh.MODID, version = Dogrrosh.VERSION, updateJSON = "https://raw.githubusercontent.com/alvin137/Dogrrosh/master/modupdate.json")
 public class Dogrrosh {
 	public static final String MODID = "dogrrosh";
 	public static final String NAME = "dogrrosh";
-	public static final String VERSION = "1.0.0.0";
+	public static final String VERSION = "0.0.0.1";
 	
 	@Instance(value = MODID)
 	public static Dogrrosh instance;
