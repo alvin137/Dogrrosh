@@ -1,13 +1,13 @@
 {
-  "homepage": "<homepage/download page for your mod>",
-  "1.10.2": {
-    "<modversion>": "<changelog for this version>", 
+  "homepage": "https://raw.githubusercontent.com/alvin137/Dogrrosh/master/modupdate.json",
+  "1.11.2": {
+    "0.0.0.1": "alpha alpha", 
     // List all versions of your mod for the given Minecraft version, along with their changelogs
   },
   "promos": {
-    "<mcversion>-latest": "<modversion>",
+    "1.11.2-latest": "0.0.0.3",
     // Declare the latest "bleeding-edge" version of your mod for the given Minecraft version
-    "<mcversion>-recommended": "<modversion>",
+    "1.11.2-recommended": "0.0.0.2",
     // Declare the latest "stable" version of your mod for the given Minecraft version
   }
 }
