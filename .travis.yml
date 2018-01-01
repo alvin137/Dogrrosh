@@ -1,12 +1,22 @@
 language: java
 jdk:
-  - oraclejdk8
+- oraclejdk8
 sudo: true
 cache:
   directories:
-    - '$HOME/.m2'
-    - '$HOME/.gradle'
+  - "$HOME/.m2"
+  - "$HOME/.gradle"
 before_cache:
 - rm -f $HOME/.gradle/caches/*/*.lock
 before_install:
 - chmod +x gradlew
+before_deploy: "gradlew build"
+deploy:
+  provider: releases
+  api_key:
+    secure: TVlkvT478QDnWRpXelExXnkHkOXtz5eugrQ2ZsP9ru/VWzQeZCqmXI6whkzKJdEmqTIvVDfiBpcWjlNqJWAeVNBstz/keGbc8n7+uUb7FpruEE6oPbp/0JrBM2y3G1bzemdMFA6iEeHU2pvI3wvuNjY4s9FkHrkuivv769udwKQ31TbsU7mJMqmsaM9P2qkoUkmOmDKs8o9OmxTKq8yivfI9UAPypVPwarcGBfBBjj/HRiHSzg1ylYfr5RaQuP5wlYhASuQ0eSPWNgpqBjBhL2+sDVqJq++Nnn1WNRoLvNl35a/zPmT471S/Gm/py1En2ZIASO7a0Zdcu57a6RLKFJugOmW4RU2YxyFnDEoJVrZ3ttwY5lhcQXDTC6rZUVVGm0NoGcAahbU1o9O3ruhFxBlihHkfuW3htn9p9u8o+YgkPCv9dnU3yvKWsMsXVDO4HpKb9CYsftG1omwQ55jLsH8qduthQUWqAiWoO60oOj4qxMDQn3CQG+gNVhLBI9BZVzoYcNbNynE1mAMIUye2Rz12CT/rtZBjMFThrJHaUuBjLoOQviv6tsq7fCPQCKN9foAzaX89BcFdzNMqxTIEqjKRJlo//uBPJ8nbe7/ihZQ9P8BNTjWLKEJjQy7f1UzfuMzLTaQCOR5WFb1czrJ/6hKre7LB1KHRCkFc28Q9rjA=
+  file: dist-file
+  on:
+    repo: alvin137/Dogrrosh
+    tags: true
+    all_branches: true
