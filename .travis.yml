@@ -10,7 +10,7 @@ before_cache:
 - rm -f $HOME/.gradle/caches/*/*.lock
 before_install:
 - chmod +x gradlew
-before_deploy: "gradlew build"
+before_deploy: "./gradle build"
 deploy:
   provider: releases
   api_key:
