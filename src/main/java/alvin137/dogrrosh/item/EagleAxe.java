@@ -4,8 +4,10 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 
+import com.google.common.base.Predicate;
+import com.google.common.base.Predicates;
 import com.google.common.collect.Sets;
-import com.tictim.ttmpcore.common.Modeled;
+import com.tictim.utilib.modeled.Modeled;
 
 import alvin137.dogrrosh.Dogrrosh;
 import alvin137.dogrrosh.DogrroshMaterial;
@@ -24,33 +26,28 @@ import net.minecraft.item.ItemSword;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.EnumActionResult;
 import net.minecraft.util.EnumHand;
+import net.minecraft.util.datafix.fixes.TotemItemRename;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.world.World;
 
-public class EagleAxe extends ItemSword implements Modeled<Item>{
+public class EagleAxe extends ItemSword implements Modeled{
 	private String name = "eagleaxe";
 	//private String toolClass;
 	private final Set<Block> effectiveBlocks;
     protected float efficiencyOnProperMaterial;
     
 	private static final Set<Block> EFFECTIVE_ON = Sets.newHashSet(new Block[] {Blocks.PLANKS, Blocks.BOOKSHELF, Blocks.LOG, Blocks.LOG2, Blocks.CHEST, Blocks.PUMPKIN, Blocks.LIT_PUMPKIN, Blocks.MELON_BLOCK, Blocks.LADDER, Blocks.WOODEN_BUTTON, Blocks.WOODEN_PRESSURE_PLATE});
-	public EagleAxe(ToolMaterial material) {
-		super(material);
+	public EagleAxe() {
+		super(DogrroshMaterial.eagleToolMaterial);
 		this.effectiveBlocks = EFFECTIVE_ON;
 		this.efficiencyOnProperMaterial = 4.0F;
-		this.efficiencyOnProperMaterial = material.getEfficiencyOnProperMaterial();
+		this.efficiencyOnProperMaterial = DogrroshMaterial.eagleToolMaterial.getEfficiency();
 		setUnlocalizedName(Dogrrosh.MODID + "." +  name);
 		setRegistryName(Dogrrosh.MODID, name);
 		setCreativeTab(Dogrrosh.DOGTAB.get());
 		
 		//toolClass = "axe";
 		
-	}
-	 
-	@Override
-	public float getStrVsBlock(ItemStack stack, IBlockState state) {
-	        Material material = state.getMaterial();
-	        return material != Material.WOOD && material != Material.PLANTS && material != Material.VINE ? super.getStrVsBlock(stack, state) : this.efficiencyOnProperMaterial;
 	}
 	
 	@Override
@@ -66,13 +63,16 @@ public class EagleAxe extends ItemSword implements Modeled<Item>{
 		double px = playerIn.posX;
 		double py = playerIn.posY;
 		double pz = playerIn.posZ;
-		List<Entity> elist = new ArrayList<Entity>();
-		elist = worldIn.getEntitiesWithinAABB(Entity.class, new AxisAlignedBB(px-10, py-5, pz-10, px+10, py+5, pz+10));
-		for(int i=0; i<elist.size();i++) {
-			elist.get(i).motionX = 10;
-			elist.get(i).motionY = 20;
+		List<Entity> elist = worldIn.getEntitiesWithinAABB(EntityLivingBase.class, new AxisAlignedBB(px-10, py-5, pz-10, px+10, py+5, pz+10), e -> (!(e instanceof EntityPlayer)));
+		float yaw = playerIn.rotationYaw;
+		if(!worldIn.isRemote) {
+		for(Entity e: elist ) {
+			e.motionX = -Math.sin(Math.toRadians(yaw));
+			e.motionZ = Math.cos(Math.toRadians(yaw));
+			e.motionY = 1;
 		}
-        return new ActionResult(EnumActionResult.PASS, playerIn.getHeldItem(handIn));
+		}
+        return new ActionResult(EnumActionResult.SUCCESS, playerIn.getHeldItem(handIn));
     } 
 	
 }
